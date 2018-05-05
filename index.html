@@ -32,10 +32,23 @@
     function create ()
     {
 	this.add.image(600,400, 'background');
+	this.input.topOnly = true;
+	this.input.on('gameobjectover', function (pointer, gameObject){
+
+		gameObject.setTint(0x00ff00);
+	});
+
+	this.input.on('gameobjectout', function (pointer, gameObject) {
+
+		gameObject.clearTint();
+	
+	});
+
+
 	scoreText = this.add.text(16,16,'score: 0', {fontSize: '24px', fill: '#000' });
 	this.input.on('pointerdown',function (pointer)
 	{
-		this.add.image(pointer.x, pointer.y, 'logo');
+		this.add.sprite(pointer.x, pointer.y, 'logo').setInteractive();
 		score = score + 10;
 		scoreText.setText('score: ' + score);
 	}, this);
