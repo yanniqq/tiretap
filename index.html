@@ -44,14 +44,17 @@
 	
 	});
 
-
-	scoreText = this.add.text(16,16,'score: 0', {fontSize: '24px', fill: '#000' });
-	this.input.on('pointerdown',function (pointer)
-	{
-		this.add.sprite(pointer.x, pointer.y, 'logo').setInteractive();
+	this.input.on('gameobjectdown', function (pointer, gameObject){
+		gameObject.destroy();
 		score = score + 10;
 		scoreText.setText('score: ' + score);
-	}, this);
+	});
+
+
+	scoreText = this.add.text(16,16,'score: 0', {fontSize: '24px', fill: '#000' });
+	
+	var sprite1 = this.add.sprite(200, 100, 'logo').setInteractive();
+	sprite1.name = 'bob';
     }
     </script>
 
